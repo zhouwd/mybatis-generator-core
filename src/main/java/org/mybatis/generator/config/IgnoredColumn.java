@@ -16,14 +16,14 @@
 
 package org.mybatis.generator.config;
 
-import static org.mybatis.generator.internal.util.StringUtility.stringContainsSpace;
-import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
-import static org.mybatis.generator.internal.util.messages.Messages.getString;
-
 import java.util.List;
 
 import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.XmlElement;
+
+import static org.mybatis.generator.internal.util.StringUtility.stringContainsSpace;
+import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
+import static org.mybatis.generator.internal.util.messages.Messages.getString;
 
 /**
  * @author Jeff Butler
@@ -60,12 +60,9 @@ public class IgnoredColumn {
     }
 
     public boolean equals(Object obj) {
-        if (obj == null || !(obj instanceof IgnoredColumn)) {
-            return false;
-        }
+		return !(obj == null || !(obj instanceof IgnoredColumn)) && columnName.equals(((IgnoredColumn) obj).getColumnName());
 
-        return columnName.equals(((IgnoredColumn) obj).getColumnName());
-    }
+	}
 
     public int hashCode() {
         return columnName.hashCode();
